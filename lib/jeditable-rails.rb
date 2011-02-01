@@ -1,0 +1,1 @@
+require 'jeditable-rails/base'
