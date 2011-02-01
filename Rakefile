@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "jeditable-rails"
   gem.homepage = "http://github.com/afeld/jeditable-rails"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{An edit-in-place gem for Rails 3}
+  gem.description = %Q{An edit-in-place gem that uses the JEditable jQuery plugin to post updates to the server via AJAX.}
   gem.email = "aidan.feldman@gmail.com"
   gem.authors = ["Aidan Feldman"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
