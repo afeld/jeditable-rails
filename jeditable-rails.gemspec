@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aidan Feldman"]
-  s.date = %q{2011-02-01}
+  s.date = %q{2011-02-02}
   s.description = %q{An edit-in-place gem that uses the JEditable jQuery plugin to post updates to the server via AJAX.}
   s.email = %q{aidan.feldman@gmail.com}
   s.extra_rdoc_files = [
@@ -24,7 +24,10 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "jeditable-rails.gemspec",
     "lib/jeditable-rails.rb",
+    "lib/jeditable-rails/base.rb",
+    "lib/jeditable-rails/helpers/jeditable_helper.rb",
     "test/helper.rb",
     "test/test_jeditable-rails.rb"
   ]
