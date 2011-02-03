@@ -1,4 +1,7 @@
 module JeditableHelper
+  # If the <tt>condition</tt> evaluates to <tt>true</tt>, an editable field
+  # will be created.  Otherwise, the value of the property of the object is
+  # returned.  See #editable_field for options.
   def editable_field_if(condition, object, property, options={})
     value = object.send property    
     if condition
@@ -28,6 +31,17 @@ module JeditableHelper
     end
   end
   
+  # Creates an editable span for the given property of the given object.
+  # When clicked, the 
+  # 
+  # === Options
+  # 
+  # [:method]
+  #   Specify the HTTP method to use: <tt>'PUT'</tt> or <tt>'POST'</tt>.
+  # [:name]
+  #   The <tt>name</tt> attribute to be used when the form is posted.
+  # [:update_url]
+  #   The URL to submit the form to.  Defaults to <tt>url_for(object)</tt>.
   def editable_field(object, property, options={})
     editable_field_if(true, object, property, options={})
   end
