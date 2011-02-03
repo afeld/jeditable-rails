@@ -4,10 +4,14 @@ A gem to add in-place-editable fields to your Rails project.  It is a wrapper fo
 
 == Requirements
 
-* jQuery[http://www.jquery.com] - see jquery-rails[http://github.com/indirect/jquery-rails] for easy integration with your Rails project
+* jQuery[http://www.jquery.com] 1.2.6+ - see jquery-rails[http://github.com/indirect/jquery-rails] for easy integration with your Rails project
 * Jeditable[http://www.appelsiini.net/projects/jeditable]
 
-== Example
+== Usage
+
+Assuming a Rails 3 project, in your Gemfile, add:
+
+  gem 'jeditable-rails'
 
 Suppose you have a <tt>User</tt> model with a <tt>#zip_code</tt> attribute.
 
