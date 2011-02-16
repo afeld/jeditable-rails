@@ -9,12 +9,12 @@ module JeditableHelper
       object.send property
     end
   end
-  
+
   # Creates an editable span for the given property of the given object.
-  # When clicked, the 
-  # 
+  # When clicked, the
+  #
   # === Options
-  # 
+  #
   # [:method]
   #   Specify the HTTP method to use: <tt>'PUT'</tt> or <tt>'POST'</tt>.
   # [:name]
@@ -22,7 +22,7 @@ module JeditableHelper
   # [:update_url]
   #   The URL to submit the form to.  Defaults to <tt>url_for(object)</tt>.
   def editable_field(object, property, options={})
-    name = "#{object.class.to_s.underscore}[#{property}]"
+    name = options.delete(:data_name) || "#{object.class.to_s.underscore}[#{property}]"
     value = object.send property
     update_url = options.delete(:update_url) || url_for(object)
     args = {:method => 'PUT', :name => name}.merge(options)
@@ -46,3 +46,4 @@ module JeditableHelper
     }.html_safe
   end
 end
+
