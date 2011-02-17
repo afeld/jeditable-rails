@@ -11,7 +11,6 @@ module JeditableHelper
   end
 
   # Creates an editable span for the given property of the given object.
-  # When clicked, the
   #
   # === Options
   #
@@ -22,12 +21,12 @@ module JeditableHelper
   # [:update_url]
   #   The URL to submit the form to.  Defaults to <tt>url_for(object)</tt>.
   def editable_field(object, property, options={})
-    name = options.delete(:data_name) || "#{object.class.to_s.underscore}[#{property}]"
+    name = "#{object.class.to_s.underscore}[#{property}]"
     value = object.send property
     update_url = options.delete(:update_url) || url_for(object)
     args = {:method => 'PUT', :name => name}.merge(options)
     %{
-      <span class="editable" data-name="#{name}">#{value}</span>
+      <span class="editable" data-id="#{object.id}" data-name="#{name}">#{value}</span>
       <script type="text/javascript">
         $(function(){
           var args = {data: function(value, settings) {
@@ -40,7 +39,7 @@ module JeditableHelper
             return retval;
           }};
           $.extend(args, #{args.to_json});
-          $(".editable[data-name='#{name}']").editable("#{update_url}", args);
+          $(".editable[data-id='#{object.id}'][data-name='#{name}']").editable("#{update_url}", args);
         });
       </script>
     }.html_safe
