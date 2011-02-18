@@ -28,19 +28,21 @@ module JeditableHelper
     %{
       <span class="editable" data-id="#{object.id}" data-name="#{name}">#{value}</span>
       <script type="text/javascript">
-        $(function(){
-          var args = {data: function(value, settings) {
-            // Unescape HTML
-            var retval = value
-              .replace(/&amp;/gi, '&')
-              .replace(/&gt;/gi, '>')
-              .replace(/&lt;/gi, '<')
-              .replace(/&quot;/gi, "\\\"");
-            return retval;
-          }};
-          $.extend(args, #{args.to_json});
-          $(".editable[data-id='#{object.id}'][data-name='#{name}']").editable("#{update_url}", args);
-        });
+        (function( $ ){
+          $(function(){
+            var args = {data: function(value, settings) {
+              // Unescape HTML
+              var retval = value
+                .replace(/&amp;/gi, '&')
+                .replace(/&gt;/gi, '>')
+                .replace(/&lt;/gi, '<')
+                .replace(/&quot;/gi, "\\\"");
+              return retval;
+            }};
+            $.extend(args, #{args.to_json});
+            $(".editable[data-id='#{object.id}'][data-name='#{name}']").editable("#{update_url}", args);
+          });
+        })( jQuery );
       </script>
     }.html_safe
   end
