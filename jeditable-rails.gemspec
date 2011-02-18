@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jeditable-rails}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aidan Feldman"]
-  s.date = %q{2011-02-03}
+  s.date = %q{2011-02-17}
   s.description = %q{An edit-in-place gem that uses the JEditable jQuery plugin to post updates to the server via AJAX.}
   s.email = %q{aidan.feldman@gmail.com}
   s.extra_rdoc_files = [
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    "CHANGELOG.markdown",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -27,7 +28,9 @@ Gem::Specification.new do |s|
     "jeditable-rails.gemspec",
     "lib/jeditable-rails.rb",
     "lib/jeditable-rails/base.rb",
-    "lib/jeditable-rails/helpers/jeditable_helper.rb"
+    "lib/jeditable-rails/helpers/jeditable_helper.rb",
+    "spec/jeditable-rails_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/afeld/jeditable-rails}
   s.licenses = ["MIT"]
