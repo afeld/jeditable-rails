@@ -14,6 +14,8 @@ module JeditableHelper
   #
   # === Options
   #
+  # [:callback]
+  #   Javascript callback function, as a string.
   # [:method]
   #   Specify the HTTP method to use: <tt>'PUT'</tt> or <tt>'POST'</tt>.
   # [:name]
@@ -24,8 +26,9 @@ module JeditableHelper
     name = "#{object.class.to_s.underscore}[#{property}]"
     value = object.send property
     update_url = options.delete(:update_url) || url_for(object)
+    callback = options.delete(:callback)
     args = {:method => 'PUT', :name => name}.merge(options)
-    %{
+    js = <<-END
       <span class="editable" data-id="#{object.id}" data-name="#{name}">#{value}</span>
       <script type="text/javascript">
         (function( $ ){
@@ -40,11 +43,14 @@ module JeditableHelper
               return retval;
             }};
             $.extend(args, #{args.to_json});
+            #{"$.extend(args, #{callback});" if callback}
             $(".editable[data-id='#{object.id}'][data-name='#{name}']").editable("#{update_url}", args);
           });
         })( jQuery );
       </script>
-    }.html_safe
+    END
+    
+    js.html_safe
   end
 end
 
