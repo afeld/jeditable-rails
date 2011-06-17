@@ -16,6 +16,9 @@ require 'jeditable-rails'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+# run migrations on the dummy project
+`cd #{File.join('spec', 'dummy')} && rake db:migrate`
+
 RSpec.configure do |config|
   config.mock_framework = :rspec
 end
