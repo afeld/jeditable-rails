@@ -10,6 +10,10 @@ module JeditableHelper
     end
   end
 
+  def jeditable_args(args)
+    "{#{args.collect {|key,value| (key==:callback) ? "#{key}:#{value}" : "#{key}:'#{value}'"}.join(',')}}"
+  end
+
   # Creates an editable span for the given property of the given object.
   #
   # === Options
@@ -39,7 +43,7 @@ module JeditableHelper
                 .replace(/&quot;/gi, "\\\"");
               return retval;
             }};
-            $.extend(args, #{args.to_json});
+            $.extend(args, #{jeditable_args(args)});
             $(".editable[data-id='#{object.id}'][data-name='#{name}']").editable("#{update_url}", args);
           });
         })( jQuery );
